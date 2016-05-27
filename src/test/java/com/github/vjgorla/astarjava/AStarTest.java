@@ -1,4 +1,4 @@
-package com.github.vjgorla.astarjava; 
+package com.github.vjgorla.astarjava;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class AStarTest {
 
-	@Test
+    @Test
     public void testPathExists() {
         AStar astar = new AStar(8, 6);
         astar.setOrigin(2, 2);
@@ -51,10 +51,10 @@ public class AStarTest {
         assertNode(nodeIterator, 6, 4);
         assertNode(nodeIterator, 6, 3);
         assertNode(nodeIterator, 6, 2);
-	}
-	
-	@Test
-	public void testPathNotExists() {
+    }
+
+    @Test
+    public void testPathNotExists() {
         AStar astar = new AStar(8, 6);
         astar.setOrigin(2, 2);
         astar.setDestination(6, 2);
@@ -73,12 +73,12 @@ public class AStarTest {
         astar.setBlocked(2, 0);
         astar.findPath();
         assertFalse(astar.isPathFound());
-	}
-	
-	private void assertNode(Iterator<Node> nodeIterator, int x, int y) {
-		assertTrue(nodeIterator.hasNext());
-		Node nextNode = nodeIterator.next();
-		assertThat(x, equalTo(nextNode.getX()));
-		assertThat(y, equalTo(nextNode.getY()));
-	}
+    }
+
+    private void assertNode(Iterator<Node> nodeIterator, int x, int y) {
+        assertTrue(nodeIterator.hasNext());
+        Node nextNode = nodeIterator.next();
+        assertThat(x, equalTo(nextNode.getX()));
+        assertThat(y, equalTo(nextNode.getY()));
+    }
 }
