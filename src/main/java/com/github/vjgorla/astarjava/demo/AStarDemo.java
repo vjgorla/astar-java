@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -50,12 +51,12 @@ public class AStarDemo extends JApplet {
     private AStar astar;
 
     public void init() {
-        setSize(450, 360);
+        setSize(470, 455);
         setLayout(null);
         for (int x = 0; x < GRID_WIDTH; x++) {
             for (int y = 0; y < GRID_HEIGHT; y++) {
                 NodePanel nodePanel = new NodePanel(x, y);
-                nodePanel.setLocation(x * NODE_PANEL_WIDTH, y * NODE_PANEL_HEIGHT);
+                nodePanel.setLocation((x * NODE_PANEL_WIDTH) + 10, (y * NODE_PANEL_HEIGHT) + 10);
                 add(nodePanel);
                 nodePanels[x][y] = nodePanel;
             }
@@ -110,6 +111,16 @@ public class AStarDemo extends JApplet {
             }
         });
         add(clearButton);
+        JEditorPane help = new JEditorPane();
+        help.setLocation(10, 355);
+        help.setSize(450, 90);
+        help.setEditable(false);
+        help.setContentType("text/html");
+        help.setText("* Double click a box to set origin (displayed as green)<br>" +
+                     "* Ctrl + double click a box to set destination (red)<br>" +
+                     "* Single click a box, or drag over a series of boxes to create walls<br>" +
+                     "* Click find path button to find the nearest path between origin and destination<br>");
+        add(help);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         enableButtons();
     }
